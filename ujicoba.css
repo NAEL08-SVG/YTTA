@@ -1,0 +1,380 @@
+#result.hidden{
+display:none;
+}
+#intro p{
+font-size:20px;
+margin-top:15px;
+}
+#intro{
+cursor:pointer;
+}
+
+body{
+margin:0;
+font-family:Arial;
+color:white;
+text-align:center;
+overflow-x:hidden;
+
+body::before{
+pointer-events:none;
+}
+
+/* background galaxy */
+
+background:
+radial-gradient(circle at 20% 30%, #0ff3 0%, transparent 40%),
+radial-gradient(circle at 80% 70%, #ff00ff33 0%, transparent 40%),
+radial-gradient(circle at 50% 50%, #001f3f 0%, #000814 80%);
+}
+
+/* bintang */
+
+#intro{
+cursor:pointer;
+}
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+
+
+background-image:
+radial-gradient(white 1px, transparent 1px);
+
+background-size:60px 60px;
+
+opacity:0.25;
+
+animation:starsMove 60s linear infinite;
+
+z-index:-1;
+}
+
+@keyframes starsMove{
+
+from{
+transform:translateY(0);
+}
+
+to{
+transform:translateY(-1000px);
+}
+
+}
+
+/* layar */
+
+.screen{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px;
+position:relative;
+z-index:1;
+}
+
+.screen{
+position:relative;
+z-index:2;
+}
+
+
+.hidden{
+display:none;
+}
+
+/* judul */
+
+.judul{
+
+margin-top:40px;
+font-size:48px;
+
+animation:judulGlow 2s infinite alternate;
+
+text-shadow:
+0 0 5px #fff,
+0 0 15px #0ff,
+0 0 30px #0ff;
+
+}
+
+@keyframes judulGlow{
+
+from{
+text-shadow:
+0 0 5px #fff,
+0 0 10px #0ff,
+0 0 20px #0ff;
+}
+
+to{
+text-shadow:
+0 0 10px #fff,
+0 0 20px #0ff,
+0 0 40px #0ff;
+}
+
+}
+
+/* kartu */
+
+.cards{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:60px;
+}
+
+.card{
+cursor:pointer;
+transition:0.4s;
+}
+
+.card img{
+width:200px;
+border-radius:12px;
+}
+
+.card:hover{
+transform:scale(1.15) rotate(5deg);
+}
+
+/* RESULT BOX */
+
+#result{
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+height:100vh;
+
+}
+
+/* kotak hasil */
+
+.resultBox{
+
+display:flex;
+align-items:center;
+gap:40px;
+
+background:rgba(0,0,0,0.6);
+
+padding:40px;
+
+border-radius:20px;
+
+box-shadow:
+0 0 30px #0ff,
+0 0 60px rgb(255,255,0);
+
+max-width:700px;
+}
+
+/* kartu hasil kiri */
+
+#resultImg{
+
+width:260px;
+
+border-radius:12px;
+
+box-shadow:0 0 40px gold;
+
+animation:kartuMuncul 0.8s ease;
+
+}
+
+/* deskripsi tengah */
+
+.resultText{
+
+max-width:400px;
+
+text-align:left;
+
+}
+
+.resultText h2{
+
+font-size:34px;
+
+margin-bottom:15px;
+
+text-align:center;
+
+}
+
+.resultText p{
+
+font-size:18px;
+
+line-height:1.6;
+
+}
+
+/* animasi kartu */
+
+@keyframes kartuMuncul{
+
+from{
+transform:scale(0) rotate(180deg);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* teks klik */
+
+.klik{
+
+margin-top:30px;
+
+animation:blink 1.5s infinite;
+
+}
+
+@keyframes blink{
+
+0%{opacity:0.3}
+50%{opacity:1}
+100%{opacity:0.3}
+
+}
+
+.card{
+cursor:pointer;
+position:relative;
+z-index:5;
+}
+
+/* BINTANG BERKEDIP */
+
+.stars{
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+pointer-events:none;
+z-index:-1; /* TARUH DI BELAKANG SEMUA */
+}
+
+/* titik bintang */
+
+.stars::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:200%;
+height:200%;
+
+background:
+radial-gradient(white 1px, transparent 1px),
+radial-gradient(white 1px, transparent 1px),
+radial-gradient(white 2px, transparent 2px);
+
+background-size:50px 50px, 80px 80px, 120px 120px;
+animation:twinkle 3s infinite alternate;
+}
+
+.stars::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:inherit;
+animation:twinkle 5s infinite alternate-reverse;
+opacity:0.5;
+}
+
+/* animasi kelap-kelip */
+
+@keyframes twinkle{
+0%{opacity:0.3;}
+100%{opacity:1;}
+}
+
+/* SHOOTING STAR KEREN */
+
+.shooting-star{
+position:fixed;
+top:-10%;
+left:50%;
+width:2px;
+height:120px;
+
+background:linear-gradient(
+-45deg,
+rgba(255,255,255,1),
+rgba(255,255,255,0)
+);
+
+border-radius:50%;
+filter:drop-shadow(0 0 6px white);
+
+opacity:0;
+pointer-events:none;
+z-index:0;
+
+animation:shoot 2s linear infinite;
+}
+
+/* ekor tambahan biar lebih real */
+.shooting-star::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:linear-gradient(
+-45deg,
+rgba(255,255,255,0.8),
+transparent
+);
+
+filter:blur(2px);
+}
+
+/* animasi gerak */
+@keyframes shoot{
+0%{
+transform:translate(0,0) rotate(45deg);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+100%{
+transform:translate(800px,600px) rotate(45deg);
+opacity:0;
+}
+}
+
+
+html, body{
+margin:0;
+padding:0;
+height:100%;
+overflow-x:hidden;
+}
+
